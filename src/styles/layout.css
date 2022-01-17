@@ -1,0 +1,36 @@
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+
+}
+
+.navbar {
+    background-color: #003F5C !important;
+}
+
+.navbar-brand{
+    color: #fff !important;
+    font-weight: 700;
+}
+
+.nav-link{
+    color: #fff !important;
+}
+
+.content{
+    padding-top: 80px;
+}
+
+.footer{
+    padding: 10px;
+    text-align: center;
+    background-color: #003f5ce8;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
