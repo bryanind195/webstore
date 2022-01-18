@@ -8,6 +8,7 @@ import RegisterPage from './pages/RegisterPage';
 import Productinfo from './pages/Productinfo';
 
 import './styles/layout.css';
+import './styles/product.css';
 
 
 function App() {
