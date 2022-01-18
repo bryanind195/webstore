@@ -1,47 +1,42 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Layout from '../components/Layout';
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import fireDB from '../fireConfig';
+import {fireproducts} from '../webstore-products';
 
 function Homepage  ()  {
 
-    async function adddata  ()  {
-        try {
-            await addDoc(collection(fireDB, "users") ,{name:'otto',age:44 })
-        } catch (error) {
-            console.log(error)
-        }
-        
-    }
+    const [products , setProducts] = useState([])
+
+    useEffect(() => {
+        getData()
+    }, [])
 
     async function getData  ()  {
         try {
-            const users = await getDocs(collection(fireDB, "users") ,{
-                name:'luis',
-                age:22,
-             });
-             const userArray = [];
+            const users = await getDocs(collection(fireDB, "products"));
+             const productsArray = [];
              users.forEach((doc) => {
                  const obj = {
                      id: doc.id,
                      ...doc.data(),
                  };
 
-                 userArray.push(obj);
+                 productsArray.push(obj);
               });
 
-              console.log(userArray);
+          setProducts(productsArray)    
         } catch (error) {
             console.log(error)
-        }
-        
+        }        
     }
+
+     
     return (
         <Layout>
             <h1>Home</h1>
 
-            <button onClick={adddata} > Add data to firebase</button>
-            <button onClick={getData} > get data  firebase</button>
+            
         </Layout>
     )
 }
