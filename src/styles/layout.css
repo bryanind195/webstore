@@ -34,3 +34,15 @@
     left: 0;
     right: 0;
 }
+button{
+    background-color: rgb(21, 48, 105);
+    box-shadow: none;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 5px;
+    font-weight: bold !important;
+}
+
+button:hover{
+    background-color: tomato;
+}
