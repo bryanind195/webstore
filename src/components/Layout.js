@@ -13,7 +13,7 @@ function layout(props) {
             <div className="content" >
                 {props.children}
             </div>
-            <Footer/>
+            {/*<Footer/>*/}
         </div>
     )
 }
