@@ -3,11 +3,12 @@ import Layout from '../components/Layout';
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import fireDB from '../fireConfig';
 import {fireproducts} from '../webstore-products';
+import {useNavigate} from 'react-router-dom';
 
 function Homepage  ()  {
 
-    const [products , setProducts] = useState([])
-
+    const [products , setProducts] = useState([]);
+    const navigate = useNavigate()
     useEffect(() => {
         getData()
     }, [])
@@ -51,7 +52,9 @@ function Homepage  ()  {
                                     <h2> $ {product.price} </h2>
                                     <div className="d-flex">
                                         <button className='mx-2'> Agregar al Carrito</button>
-                                        <button> Ver</button>
+                                        <button onClick={()=>{
+                                            navigate(`/productinfo/${product.id}` )
+                                        } } > Ver </button>
                                     </div>
                                 </div>
                             </div>
