@@ -2,23 +2,27 @@ import React, {useState, useEffect} from 'react';
 import Layout from '../components/Layout';
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import fireDB from '../fireConfig';
-import {fireproducts} from '../webstore-products';
+//import {fireproducts} from '../webstore-products';
 import {useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
+
 
 function Homepage  ()  {
 
     const [products , setProducts] = useState([]);
-    const {cartItems } = useSelector(state=>state.cartReducer)
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+    const {cartItems } = useSelector(state=>state.cartReducer);
+    const [loading, setLoading ] = useState(false);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        getData()
-    }, [])
+        getData();
+    }, []);
 
     async function getData  ()  {
+        
         try {
+            setLoading(true)
             const users = await getDocs(collection(fireDB, "products"));
              const productsArray = [];
              users.forEach((doc) => {
@@ -28,25 +32,28 @@ function Homepage  ()  {
                  };
 
                  productsArray.push(obj);
+                 setLoading(false)
               });
 
           setProducts(productsArray)    
         } catch (error) {
             console.log(error)
+            setLoading(false )
         }        
     }
-
-        const addToCart =(product) =>{
-        dispatch({ type: "ADD_TO_CART" , payload: product });
-
-    };
 
     useEffect(() => {
         localStorage.setItem('cartItems' , JSON.stringify(cartItems));
     }, [cartItems]);
      
+
+        const addToCart =(product) =>{
+        dispatch({ type: "ADD_TO_CART" , payload: product });
+
+    };
+   
     return (
-        <Layout>
+        <Layout loading={loading} >
             <div className= "container">
 
                 <div className= "row">

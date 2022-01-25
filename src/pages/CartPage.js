@@ -41,7 +41,7 @@ const CartPage = () => {
                 <tbody>
                     {cartItems.map(item=>{
                         return <tr>
-                                    <td><img src={item.imageURL} height="80" width='80' /> </td>
+                                    <td><img src={item.imageURL} height='80' width='80' /> </td>
 
                                     <td>{item.name} </td>
                                     <td>{item.price} </td>
@@ -55,7 +55,7 @@ const CartPage = () => {
                     <h1 className='total-amount' > Total a Pagar = $ {totalAmount} </h1>
             </div>
             <div className='d-flex justify-content-end mt-3' >
-                    <button>Comprar...!!</button>
+                    <button> Realizar Pedido</button>
             </div>
         </Layout>
     )

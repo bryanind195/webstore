@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import Loader from './Loader';
 
 
 
@@ -9,6 +10,9 @@ import Footer from './Footer';
 function layout(props) {
     return (
         <div>
+
+            {props.loading && (<Loader/>)}
+
             <Header/>
             <div className="content" >
                 {props.children}
