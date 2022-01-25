@@ -32,6 +32,9 @@ function Homepage  ()  {
         }        
     }
 
+    const addToCart =(product) =>{
+
+    }
      
     return (
         <Layout>
@@ -51,7 +54,7 @@ function Homepage  ()  {
                                 <div className='product-actions'>
                                     <h2> $ {product.price} </h2>
                                     <div className="d-flex">
-                                        <button className='mx-2'> Agregar al Carrito</button>
+                                        <button className='mx-2'onClick={()=>addToCart(product)}> Agregar al Carrito</button>
                                         <button onClick={()=>{
                                             navigate(`/productinfo/${product.id}` )
                                         } } > Ver </button>
