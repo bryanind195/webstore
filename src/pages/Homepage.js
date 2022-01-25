@@ -36,14 +36,14 @@ function Homepage  ()  {
         }        
     }
 
-    useEffect(() => {
-        localStorage.setItem('cartItems' , JSON.stringify(cartItems));
-    }, [cartItems])
-
-    const addToCart =(product) =>{
+        const addToCart =(product) =>{
         dispatch({ type: "ADD_TO_CART" , payload: product });
 
     };
+
+    useEffect(() => {
+        localStorage.setItem('cartItems' , JSON.stringify(cartItems));
+    }, [cartItems]);
      
     return (
         <Layout>
