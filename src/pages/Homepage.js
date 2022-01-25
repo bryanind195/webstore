@@ -4,10 +4,13 @@ import { collection, addDoc, getDocs } from "firebase/firestore";
 import fireDB from '../fireConfig';
 import {fireproducts} from '../webstore-products';
 import {useNavigate} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
 
 function Homepage  ()  {
 
     const [products , setProducts] = useState([]);
+    const {cartItems } = useSelector(state=>state.cartReducer)
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     useEffect(() => {
         getData()
@@ -31,10 +34,10 @@ function Homepage  ()  {
             console.log(error)
         }        
     }
-
     const addToCart =(product) =>{
+        dispatch({ type: "ADD_TO_CART" , payload: product });
 
-    }
+    };
      
     return (
         <Layout>
