@@ -12,6 +12,7 @@ function Homepage  ()  {
     const {cartItems } = useSelector(state=>state.cartReducer)
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
     useEffect(() => {
         getData()
     }, [])
@@ -34,6 +35,11 @@ function Homepage  ()  {
             console.log(error)
         }        
     }
+
+    useEffect(() => {
+        localStorage.setItem('cartItems' , JSON.stringify(cartItems));
+    }, [cartItems])
+
     const addToCart =(product) =>{
         dispatch({ type: "ADD_TO_CART" , payload: product });
 
