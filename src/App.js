@@ -9,6 +9,7 @@ import Productinfo from './pages/Productinfo';
 
 import './styles/layout.css';
 import './styles/product.css';
+import './styles/authentication.css';
 
 
 function App() {
