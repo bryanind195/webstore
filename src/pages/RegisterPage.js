@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {Link} from "react-router-dom";
 
 function RegisterPage() {
     const [email, setEmail] = useState('')
@@ -6,7 +7,10 @@ function RegisterPage() {
     const [cpassword, setCpassword] = useState('')
     return (
         <div className='register-parent'>
-            <div className="row">                
+            <div className="register-top">
+                
+            </div>
+            <div className="row justify-content-center">                
                 <div className="col-md-5">
                 <lottie-player
                    src="https://assets6.lottiefiles.com/packages/lf20_yr6zz3wv.json" 
@@ -17,9 +21,9 @@ function RegisterPage() {
                    ></lottie-player>
                 </div>
 
-                <div className="col-md-4">
+                <div className="col-md-4 z1">
                     
-                    <div className="login-form">
+                    <div className="register-form">
                         
                         <h2>Registro</h2>
 
@@ -29,7 +33,9 @@ function RegisterPage() {
                         <input type="text" className="form-control" placeholder="password" value={email} onChange={(e)=>{setPassword(e.target.value)}} />
                         <input type="text" className="form-control" placeholder="confirm password" value={email} onChange={(e)=>{setCpassword(e.target.value)}} />
 
-                        <button>Registrese</button>
+                        <button className='my-3'>Registrese</button>
+
+                        
 
                     </div>
 
