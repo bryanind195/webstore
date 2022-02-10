@@ -1,7 +1,7 @@
 //import logo from './logo.svg';
 import './App.css';
 import Homepage from './pages/Homepage';
-import {Route, BrowserRouter , Routes} from 'react-router-dom'
+import {Route, BrowserRouter , Routes, Navigate} from 'react-router-dom'
 import CartPage from './pages/CartPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
@@ -21,11 +21,11 @@ function App() {
        <BrowserRouter>
         <Routes>
 
-            <Route path='/' exact element={<Homepage/>} />
+            <Route path='/' exact element={<ProtectedRoutes><Homepage/></ProtectedRoutes>} />            
+            <Route path='/productinfo/:productid' exact element={<ProtectedRoutes><Productinfo/></ProtectedRoutes>} />
+            <Route path='/cart' exact element={<ProtectedRoutes><CartPage/></ProtectedRoutes>} />
             <Route path='/login' exact element={<LoginPage/>} />
             <Route path='/register' exact element={<RegisterPage/>} />
-            <Route path='/productinfo/:productid' exact element={<Productinfo/>} />
-            <Route path='/cart' exact element={<CartPage/>} />
 
         </Routes>
        </BrowserRouter>
@@ -34,3 +34,14 @@ function App() {
 }
 
 export default App;
+
+export const ProtectedRoutes = ({children}) =>{
+
+  if(localStorage.getItem('currentUSer')){
+    return children;
+
+  }else {
+    return <Navigate to='/login'/>;
+  }
+
+}

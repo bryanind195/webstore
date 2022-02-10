@@ -6,7 +6,12 @@ import {useSelector} from 'react-redux';
 function Header() {
 
     const {cartItems} = useSelector (state => state.cartReducer );
-    const {user} = JSON.parse(localStorage.getItem('currentUser'))
+    const {user} = JSON.parse(localStorage.getItem("currentUser"));
+
+    const logout= () =>{
+      localStorage.removeItem('currentUser');
+      window.location.reload();
+    };
     
 
     return (
@@ -42,7 +47,7 @@ function Header() {
                                 </Link>
                               </li>
                               <li className="nav-item">
-                                <Link className="nav-link" to="/">
+                                <Link className="nav-link" to="/" onClick={logout}>
                                 Salir
                                 </Link>
                               </li>

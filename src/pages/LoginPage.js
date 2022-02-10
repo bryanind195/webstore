@@ -48,7 +48,7 @@ function LoginPage() {
                     
                     <div className="login-form">
                         
-                        <h2>Entrar</h2>
+                        <h2>Acceder</h2>
 
                         
 
