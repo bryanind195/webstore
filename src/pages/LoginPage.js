@@ -36,7 +36,7 @@ function LoginPage() {
                         <button className='my-3'>Entre</button>
 
                         <hr/>
-                        <Link to='/register' > Click here to register</Link>
+                        <Link to='/register' > Click para Registrarse</Link>
 
                     </div>
 

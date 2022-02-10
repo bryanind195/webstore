@@ -35,7 +35,8 @@ function RegisterPage() {
 
                         <button className='my-3'>Registrese</button>
 
-                        
+                        <hr/>
+                        <Link to='/login' > Click para Loguear</Link>
 
                     </div>
 
