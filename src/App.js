@@ -10,11 +10,14 @@ import Productinfo from './pages/Productinfo';
 import './styles/layout.css';
 import './styles/product.css';
 import './styles/authentication.css';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
   return (
     <div className="App">
+      <ToastContainer/>
        <BrowserRouter>
         <Routes>
 

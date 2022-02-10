@@ -1,17 +1,40 @@
 import React, {useState} from 'react';
 import {Link} from "react-router-dom";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {toast} from "react-toastify";
+import Loader from '../components/Loader';
 
 function LoginPage() {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [cpassword, setCPassword] = useState('');
+    const [loading, setLoading] = useState(false);
+    const auth = getAuth();
+
+    const login = async ()=>{
+        try {
+            setLoading(true)
+            const result = await signInWithEmailAndPassword( auth, email, password);
+            localStorage.setItem('currentUser', JSON.stringify(result))            
+            setLoading(false);
+            toast.success('Acceso exitoso');
+            window.location.href='/'
+        } catch (error) {
+            console.log(error)
+            toast.error('Acceso fallido')
+            setLoading(false)
+        }
+    }
+
     
     return (
         <div className='login-parent'>
+            {loading && <Loader/>}
             <div className="login-top">
                 
             </div>
             <div className="row justify-content-center">                
-                <div className="col-md-5">
+                <div className="col-md-5 ">
                 <lottie-player
                    src="https://assets6.lottiefiles.com/packages/lf20_yr6zz3wv.json" 
                    background="transparent" 
@@ -30,13 +53,13 @@ function LoginPage() {
                         
 
                         <input type="text" className="form-control" placeholder="email" value={email} onChange={(e)=>{setEmail(e.target.value)}} />
-                        <input type="text" className="form-control" placeholder="password" value={email} onChange={(e)=>{setPassword(e.target.value)}} />
+                        <input type="text" className="form-control" placeholder="password" value={password} onChange={(e)=>{setPassword(e.target.value)}} />
                         
 
-                        <button className='my-3'>Entre</button>
+                        <button className='my-3' onClick={login} >Entre</button>
 
                         <hr/>
-                        <Link to='/register' > Click para Registrarse</Link>
+                        <Link to='/register'  > Click para Registrarse</Link>
 
                     </div>
 
